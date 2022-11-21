@@ -60,6 +60,8 @@ fun DemoScreen() {
     val modifier = Modifier
         .border(width = 2.dp, color = Color.Black)
         .padding(all = 10.dp)
+
+    val secondModifier = Modifier.height(100.dp)
     
     Column(
         Modifier.padding(20.dp),
@@ -68,7 +70,7 @@ fun DemoScreen() {
     ) {
         Text(
             text = "Hello Compose",
-            modifier = modifier,
+            modifier = modifier.then(secondModifier),
             fontSize = 40.sp,
             fontWeight = FontWeight.Bold
         )
