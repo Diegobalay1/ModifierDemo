@@ -1,3 +1,3 @@
 # ModifierDemo
-Uso de los modificadores. Modifier
+Uso de los modificadores.
 Using Modifiers in Compose.
