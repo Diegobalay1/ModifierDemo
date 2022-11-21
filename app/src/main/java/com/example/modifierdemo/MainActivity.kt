@@ -21,6 +21,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +41,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-// Adding modifier support to a composable
+/*
+    We build a custom modifier and pass it through to CustomImage
+    to modify the appearance on the image resource when it is displayed
+ */
 @Composable
 fun CustomImage(image: Int, modifier: Modifier = Modifier) {
     Image(
@@ -49,18 +54,33 @@ fun CustomImage(image: Int, modifier: Modifier = Modifier) {
     )
 }
 
-
+// modify the DemoScreen composable to include a call to the CustomImage component
 @Composable
 fun DemoScreen() {
     val modifier = Modifier
         .border(width = 2.dp, color = Color.Black)
         .padding(all = 10.dp)
-    Text(
-        text = "Hello Compose",
-        modifier = modifier,
-        fontSize = 40.sp,
-        fontWeight = FontWeight.Bold
-    )
+    
+    Column(
+        Modifier.padding(20.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = "Hello Compose",
+            modifier = modifier,
+            fontSize = 40.sp,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        CustomImage(image = R.drawable.vacation,
+            Modifier
+                .padding(16.dp)
+                .width(270.dp)
+                .clip(shape = RoundedCornerShape(30.dp))
+        )
+    }
+    
 }
 
 @Preview(showBackground = true)
